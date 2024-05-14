@@ -749,6 +749,7 @@ class BrowserContextImpl extends ChannelOwner implements BrowserContext {
         PageImpl page = connection.getExistingObject(params.getAsJsonObject("page").get("guid").getAsString());
         page.listeners.notify(PageImpl.EventType.REQUESTFAILED, request);
       }
+      request.disposeChannelOwner(true);
     } else if ("requestFinished".equals(event)) {
       String guid = params.getAsJsonObject("request").get("guid").getAsString();
       RequestImpl request = connection.getExistingObject(guid);
