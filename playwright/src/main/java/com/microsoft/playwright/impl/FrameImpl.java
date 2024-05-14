@@ -461,11 +461,12 @@ public class FrameImpl extends ChannelOwner implements Frame {
     JsonObject params = gson().toJsonTree(options).getAsJsonObject();
     params.addProperty("url", url);
     JsonElement result = sendMessage("goto", params);
-    JsonObject jsonResponse = result.getAsJsonObject().getAsJsonObject("response");
-    if (jsonResponse == null) {
-      return null;
-    }
-    return connection.getExistingObject(jsonResponse.get("guid").getAsString());
+    return  null;
+//    JsonObject jsonResponse = result.getAsJsonObject().getAsJsonObject("response");
+//    if (jsonResponse == null) {
+//      return null;
+//    }
+//    return connection.getExistingObject(jsonResponse.get("guid").getAsString());
   }
 
   @Override
